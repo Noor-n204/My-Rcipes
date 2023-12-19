@@ -1,0 +1,29 @@
+#recipes{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr ;
+    grid-gap: 10px;
+    margin-top: 20px;
+
+}
+
+.image{
+    width: 250px;
+    align-self: center;
+}
+
+.recipe {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(222, 222, 126);
+    margin-right: 20px;
+    box-shadow: 1px 1px 3px black;
+}
+
+ul{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr ;
+    grid-gap: 10px;
+}
+

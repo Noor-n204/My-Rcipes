@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="inputSearch" placeholder="Search For Recipes" />
+    <button id="getRecipes" onclick=searchRecipes() >search</button><br>
+
+    <div class="check-group">
+        <input class="form-radio" type="checkbox" name="dairy" id="diary-ingredients">
+        <label for="diary-ingredients">Diary ingredients</label>
+    </div>
+
+    <div class="check-group">
+        <input class="form-radio" type="checkbox" name="gluten" id="gluten-ingredients">
+        <label for="gluten-ingredients">gluten ingredients</label>
+    </div>
+
+    <div id="recipes"></div>
+
+    <script id="recipes-template" type="text/x-handlebars-template">
+        {{#each recipes}}
+            <div class="recipe">
+                <a href="{{href}}" target="_blank" >{{title}}</a><br>
+                <img class="image" src="{{thumbnail}}" >
+                <p>Ingrediants</p>
+                <ul>
+                    {{#each ingredients}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+    </script>
+
+
+    
+
+
+
+ 
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="render.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
