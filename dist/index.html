@@ -27,14 +27,16 @@
     <script id="recipes-template" type="text/x-handlebars-template">
         {{#each recipes}}
             <div class="recipe">
-                <a href="{{href}}" target="_blank" >{{title}}</a><br>
+                <h2><b><a href="{{href}}" target="_blank" >{{title}}</a></b></h2><br>
                 <img class="image" src="{{thumbnail}}" >
-                <p>Ingrediants</p>
+                <h2>Ingrediants</h2>
                 <ul>
                     {{#each ingredients}}
                         <li>{{this}}</li>
                     {{/each}}
                 </ul>
+                <p><b>Chef : </b>{{chef}}</p>
+                <p><b>Rating : </b>{{rndInt}}</p>
             </div>
         {{/each}}
     </script>
