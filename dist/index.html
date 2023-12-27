@@ -22,13 +22,17 @@
         <label for="gluten-ingredients">Gluten ingredients</label>
     </div>
 
+    <button id="previousButton">previous</button>
+    <button id="nextButton" >next</button>
+
+
     <div id="recipes"></div>
 
     <script id="recipes-template" type="text/x-handlebars-template">
         {{#each recipes}}
             <div class="recipe">
                 <h2><b><a href="{{href}}" target="_blank" >{{title}}</a></b></h2><br>
-                <img class="image" src="{{thumbnail}}" >
+                <iframe class="image" src="{{thumbnail}}"></iframe>
                 <h2>Ingrediants</h2>
                 <ul>
                     {{#each ingredients}}
@@ -36,13 +40,15 @@
                     {{/each}}
                 </ul>
                 <p><b>Chef : </b>{{chef}}</p>
-                <p><b>Rating : </b>{{rndInt}}</p>
+                <p><b>Rating : </b>{{rndRating}}</p>
+                <button><a href="mailto:?subject=Check%20out%20this%20recipe%20{{title}}!&body=%20You%20can%20see%20the%20recipe%20in%20this%20video">Email Us</a></button>   
+
             </div>
         {{/each}}
     </script>
 
 
-    
+
 
 
 

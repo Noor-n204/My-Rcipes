@@ -2,6 +2,7 @@ const errors =require('./errors')
 const {faker} =require(`@faker-js/faker`)
 const consts = require('../../config')
 const sensitivesMap = consts.sensitivities
+let currentPage = 0
 
 class recipesController {
 
@@ -23,16 +24,17 @@ class recipesController {
         }
     }
     
-    filtered(arr){
+    filtered(arr, GIF){
         
         const filteredArr = arr.map((recipe) =>{ let chef = faker.person.firstName()
-                let rndInt = Math.floor(Math.random() * 5) + 1
-                return {idMeal : recipe.idMeal , title : recipe.title ,chef : chef, thumbnail : recipe.thumbnail, rndInt : rndInt, href : recipe.href, ingredients: recipe.ingredients}})
+                let rndRating = Math.floor(Math.random() * 5) + 1
+                let rndGIF = Math.floor(Math.random()* GIF.length)
+                return {idMeal : recipe.idMeal , title : recipe.title ,chef : chef, thumbnail : GIF[rndGIF].embed_url, rndRating : rndRating, href : recipe.href, ingredients: recipe.ingredients}})
         return filteredArr
     }
 
-    filterRecipesBySenstivites(recipes, arrSenstivities){
-        const filteredRecipes= this.filtered(recipes) 
+    filterRecipesBySenstivites(recipes,GIF, arrSenstivities){
+        const filteredRecipes= this.filtered(recipes, GIF) 
         return filteredRecipes.filter((recipe)=> !this.isContainingSensntivites(arrSenstivities,recipe))
     }
 
@@ -53,6 +55,24 @@ class recipesController {
             }
         }
         return false
+    }
+
+    paginatedResults(move, recipes){
+        const limit = 5
+        let Newrecipes = []
+        const startIndex = currentPage * limit
+        const endIndex = currentPage * limit
+
+        if(move == "next" & endIndex<recipes.length){
+            currentPage++
+            Newrecipes = recipes.slice(currentPage*limit, currentPage*limit+ limit)
+        }
+
+        if(move == "previous" & startIndex>0){
+            currentPage--
+            Newrecipes = recipes.slice(currentPage*limit, currentPage*limit+ limit)
+        }
+        return Newrecipes
     }
 }
 
